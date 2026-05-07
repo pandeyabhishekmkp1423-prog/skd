@@ -1,0 +1,14 @@
+{
+  "name": "MAA VINDHYAVASHINI S.K.D PVT. LTD. & DEVELOPERS",
+  "description": "Premium Estate Builders & Construction Developers in Lucknow. Crafting luxury townships with architectural excellence and 3D interactive visualizations.",
+  "requestFramePermissions": [
+    "camera",
+    "microphone",
+    "geolocation"
+  ],
+  "majorCapabilities": [
+    "3D Visualizations",
+    "Animated Interactions",
+    "Futuristic UI"
+  ]
+}

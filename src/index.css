@@ -1,0 +1,141 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Playfair Display", ui-serif, Georgia, serif;
+  
+  --color-primary: #0F172A;
+  --color-accent: #C8A45D;
+  --color-luxury-white: #FAFAF8;
+  --color-ivory: #F5F1E8;
+  --color-champagne: #D6B97A;
+  --color-charcoal: #1E293B;
+
+  --radius-4xl: 2.5rem;
+  --radius-5xl: 3.5rem;
+}
+
+@layer base {
+  body {
+    @apply bg-luxury-white text-primary antialiased;
+    font-feature-settings: "ss01", "ss02", "cv01", "cv02";
+  }
+
+  /* Fluid Typography */
+  h1 { @apply text-[clamp(2.5rem,8vw,10rem)] leading-[0.8] tracking-tighter font-black uppercase; }
+  h2 { @apply text-[clamp(2rem,6vw,8rem)] leading-[0.85] tracking-tighter font-black uppercase; }
+  h3 { @apply text-[clamp(1.5rem,4vw,4rem)] leading-none tracking-tighter font-black uppercase; }
+}
+
+@layer utilities {
+  .perspective-1000 {
+    perspective: 1000px;
+  }
+  .perspective-2000 {
+    perspective: 2000px;
+  }
+  .preserve-3d {
+    transform-style: preserve-3d;
+  }
+  .translate-z-50 {
+    transform: translateZ(50px);
+  }
+  .translate-z-100 {
+    transform: translateZ(100px);
+  }
+}
+
+.glass {
+  @apply bg-white/10 backdrop-blur-xl border border-white/20 shadow-xl;
+}
+
+.glass-dark {
+  @apply bg-primary/40 backdrop-blur-xl border border-white/5 shadow-2xl;
+}
+
+.glass-ivory {
+  @apply bg-ivory/60 backdrop-blur-xl border border-white/40 shadow-xl;
+}
+
+.lux-glass {
+  @apply bg-white/5 backdrop-blur-2xl border border-white/10 shadow-[0_25px_50px_-12px_rgba(0,0,0,0.5)];
+}
+
+.lux-glass-light {
+  @apply bg-white/40 backdrop-blur-xl border border-white/40 shadow-[0_20px_40px_-15px_rgba(0,0,0,0.1)];
+}
+
+.text-gradient-gold {
+  @apply bg-clip-text text-transparent bg-gradient-to-r from-accent via-champagne to-accent;
+}
+
+.architectural-grid {
+  background-size: 40px 40px;
+  background-image: 
+    linear-gradient(to right, rgba(0,0,0,0.02) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0,0,0,0.02) 1px, transparent 1px);
+}
+
+.architectural-grid-light {
+  background-size: 60px 60px;
+  background-image: 
+    linear-gradient(to right, rgba(200,164,93,0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(200,164,93,0.05) 1px, transparent 1px);
+}
+
+.shine-effect {
+  position: relative;
+  overflow: hidden;
+}
+
+.shine-effect::after {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    45deg,
+    transparent,
+    rgba(255, 255, 255, 0.1),
+    transparent
+  );
+  transform: rotate(45deg);
+  transition: 0.5s;
+}
+
+.shine-effect:hover::after {
+  left: 100%;
+  top: 100%;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-20px); }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+@keyframes slow-pan {
+  0% { transform: scale(1) translateX(0); }
+  100% { transform: scale(1.1) translateX(-5%); }
+}
+
+.animate-slow-pan {
+  animation: slow-pan 20s linear infinite alternate;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  @apply bg-ivory;
+}
+::-webkit-scrollbar-thumb {
+  @apply bg-accent/40 rounded-full hover:bg-accent/80 transition-colors;
+}
