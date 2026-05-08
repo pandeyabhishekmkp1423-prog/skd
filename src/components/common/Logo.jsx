@@ -1,9 +1,8 @@
 import React from 'react';
 
-// Replace the path with the actual filename in your /public folder
 const LOGO_SRC = "/logo.png"; 
 
-export const Logo = ({ variant = "gold", showText = true, scale = 1 }) => {
+export const Logo = ({ variant = "gold", showText = true }) => {
   const colorMap = {
     dark: "text-primary",
     light: "text-white",
@@ -13,56 +12,30 @@ export const Logo = ({ variant = "gold", showText = true, scale = 1 }) => {
   const textColor = colorMap[variant] || "text-accent";
 
   return (
-    <div 
-      className={`flex items-center gap-3 md:gap-4 ${textColor} origin-left`} 
-      style={{ transform: `scale(${scale})` }}
-    >
-      {/* 3D Cinematic Logo Container */}
-      <div className="relative group perspective-1000">
-        <div className="relative z-10 transform transition-all duration-700 group-hover:scale-110 group-hover:rotate-[5deg] active:scale-95">
-           <img 
-            src={LOGO_SRC} 
-            alt="Maa Vindhyavashini Logo" 
-            className="w-12 h-12 md:w-16 md:h-16 object-contain filter drop-shadow-lg"
-           />
-        </div>
-        
-        {/* Glow Effects */}
-        <div className="absolute inset-0 blur-2xl bg-accent/20 opacity-0 group-hover:opacity-100 transition-opacity duration-1000" />
-        <div className="absolute -inset-2 bg-gradient-to-tr from-accent/10 to-transparent rounded-full opacity-0 group-hover:opacity-100 transition-opacity" />
+    <div className={`flex items-center gap-2 md:gap-3 ${textColor}`}>
+      {/* Optimized Logo Icon */}
+      <div className="relative shrink-0">
+        <img 
+          src={LOGO_SRC} 
+          alt="MV Logo" 
+          // Using responsive height instead of scale to keep navbar slim
+          className="h-10 w-auto md:h-14 lg:h-16 object-contain transition-all duration-500"
+        />
       </div>
       
-      {/* Brand Typography */}
+      {/* Brand Typography - Hidden on very small screens, visible on mobile+ */}
       {showText && (
-        <div className="flex flex-col leading-[1.1]">
-          <span className="text-[14px] sm:text-[16px] md:text-xl font-black uppercase tracking-tight sm:tracking-[0.1em] md:tracking-[0.15em] whitespace-nowrap drop-shadow-sm">
-            MAA VINDHYAVASHINI
+        <div className="flex flex-col justify-center border-l border-current/20 pl-2 md:pl-3">
+          <h1 className="text-[10px] sm:text-xs md:text-lg font-black uppercase tracking-wider leading-none">
+            MAA <span className="opacity-80">VINDHYAVASHINI</span>
+          </h1>
+          <span className="text-[7px] md:text-[9px] font-bold opacity-60 uppercase tracking-[0.2em] mt-1">
+            S.K.D Pvt. Ltd. & Developers
           </span>
-          <div className="flex flex-col mt-0.5">
-            <span className="text-[9px] sm:text-[10px] md:text-[11px] font-bold opacity-80 uppercase tracking-[0.1em] md:tracking-[0.2em] whitespace-nowrap">
-              S.K.D Private Limited
-            </span>
-            <div className="flex items-center gap-2 mt-0.5">
-              <div className="h-[1px] w-3 md:w-6 bg-current opacity-30" />
-              <span className="text-[8px] md:text-[9px] font-medium opacity-60 uppercase tracking-[0.3em] whitespace-nowrap">
-                & Developers
-              </span>
-            </div>
-          </div>
         </div>
       )}
     </div>
   );
 };
-
-export const SquareLogo = () => (
-  <div className="w-16 h-16 bg-white/10 backdrop-blur-md flex items-center justify-center rounded-2xl shadow-2xl border border-white/20">
-    <img 
-  src={logo.png} 
-  alt="Maa Vindhyavashini Logo" 
-  className="w-12 h-12 md:w-16 md:h-16 object-contain"
-/>
-  </div>
-);
 
 export default Logo;
